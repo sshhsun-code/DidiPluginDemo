@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -39,8 +40,12 @@ public class MainActivity extends AppCompatActivity {
         if (apk.exists()) {
             try {
                 pluginManager.loadPlugin(apk);
+                Toast.makeText(getApplicationContext(),
+                        "plugin插件加载成功", Toast.LENGTH_SHORT).show();
+                Log.e("sunqi_log", "plugin插件加载成功");
             } catch (Exception e) {
                 e.printStackTrace();
+                Log.e("sunqi_log", "plugin插件加载失败 ：" + e.getMessage());
             }
         } else {
             Toast.makeText(getApplicationContext(),
